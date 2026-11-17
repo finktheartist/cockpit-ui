@@ -1,0 +1,240 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "cockpit-ui",
+  "homepage": "https://cockpit-ui.vercel.app",
+  "items": [
+    {
+      "name": "launch",
+      "type": "registry:file",
+      "title": "Cockpit UI Launch",
+      "description": "A red button under an orange guard. Lift the guard, then hold the button: lamps count up, the screen counts down, speed lines close in. Hold to the end and the robot launches across the whole control. One file of about 1144 KB with its paintings inside it, no dependencies, defines <cockpit-launch>.",
+      "author": "Justin Finkelman <https://github.com/finktheartist>",
+      "categories": [
+        "button",
+        "confirm",
+        "anime",
+        "animation"
+      ],
+      "files": [
+        {
+          "path": "launch/launch.js",
+          "type": "registry:file",
+          "target": "~/public/cockpit-ui/launch.js"
+        }
+      ],
+      "docs": "Cockpit UI Launch is a plain script that registers a custom element. Load /cockpit-ui/launch.js with a script tag (not a module), then use <cockpit-launch></cockpit-launch>. Listen for cockpit:launch; read el.state (safe, armed, launched); el.reset() puts the guard back. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+    },
+    {
+      "name": "dial",
+      "type": "registry:file",
+      "title": "Cockpit UI Output gain",
+      "description": "A slider that is a dial beside a screen. Turn it and eleven lamps light round it, the number and the trace on the screen climb, and the copy changes at each level. At 100 the pilot cuts in. One file of about 605 KB with its paintings inside it, no dependencies, defines <cockpit-dial>.",
+      "author": "Justin Finkelman <https://github.com/finktheartist>",
+      "categories": [
+        "slider",
+        "range",
+        "dial",
+        "anime",
+        "animation"
+      ],
+      "files": [
+        {
+          "path": "dial/dial.js",
+          "type": "registry:file",
+          "target": "~/public/cockpit-ui/dial.js"
+        }
+      ],
+      "docs": "Cockpit UI Output gain is a plain script that registers a custom element. Load /cockpit-ui/dial.js with a script tag (not a module), then use <cockpit-dial value=\"20\"></cockpit-dial>. Read el.value (0 to 100); it fires input while it turns and change when let go. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+    },
+    {
+      "name": "checklist",
+      "type": "registry:file",
+      "title": "Cockpit UI Pre-launch check",
+      "description": "Four latching buttons with lit labels and a screen that keeps the tally. Tick all four and the deck crew wave you off. One file of about 559 KB with its paintings inside it, no dependencies, defines <cockpit-checklist>.",
+      "author": "Justin Finkelman <https://github.com/finktheartist>",
+      "categories": [
+        "checkbox",
+        "checklist",
+        "anime",
+        "animation"
+      ],
+      "files": [
+        {
+          "path": "checklist/checklist.js",
+          "type": "registry:file",
+          "target": "~/public/cockpit-ui/checklist.js"
+        }
+      ],
+      "docs": "Cockpit UI Pre-launch check is a plain script that registers a custom element. Load /cockpit-ui/checklist.js with a script tag (not a module), then use <cockpit-checklist></cockpit-checklist>. Read el.value (four digits such as \"1010\") and el.complete; it fires input and change. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+    },
+    {
+      "name": "lock",
+      "type": "registry:file",
+      "title": "Cockpit UI Safety lock",
+      "description": "A heavy toggle between LOCK and RELEASE beside a screen listing four clamps. Throw it and the clamps let go one after another; when the last one goes, the restraints blow off. One file of about 757 KB with its paintings inside it, no dependencies, defines <cockpit-lock>.",
+      "author": "Justin Finkelman <https://github.com/finktheartist>",
+      "categories": [
+        "switch",
+        "toggle",
+        "anime",
+        "animation"
+      ],
+      "files": [
+        {
+          "path": "lock/lock.js",
+          "type": "registry:file",
+          "target": "~/public/cockpit-ui/lock.js"
+        }
+      ],
+      "docs": "Cockpit UI Safety lock is a plain script that registers a custom element. Load /cockpit-ui/lock.js with a script tag (not a module), then use <cockpit-lock></cockpit-lock>. Read el.checked and listen for change. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+    },
+    {
+      "name": "mode",
+      "type": "registry:file",
+      "title": "Cockpit UI Drive mode",
+      "description": "Four key caps: cruise, combat, snipe, stealth. The chosen one lights in its own colour and the screen redraws for it. Choosing combat brings the robot's fist. One file of about 529 KB with its paintings inside it, no dependencies, defines <cockpit-mode>.",
+      "author": "Justin Finkelman <https://github.com/finktheartist>",
+      "categories": [
+        "radio",
+        "segmented",
+        "anime",
+        "animation"
+      ],
+      "files": [
+        {
+          "path": "mode/mode.js",
+          "type": "registry:file",
+          "target": "~/public/cockpit-ui/mode.js"
+        }
+      ],
+      "docs": "Cockpit UI Drive mode is a plain script that registers a custom element. Load /cockpit-ui/mode.js with a script tag (not a module), then use <cockpit-mode></cockpit-mode>. Read el.value (cruise, combat, snipe or stealth); it fires input and change. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+    },
+    {
+      "name": "alert",
+      "type": "registry:file",
+      "title": "Cockpit UI Alert",
+      "description": "A warning panel: three level lamps, a hazard-striped window and an ACKNOWLEDGE bar. It shows a notice, a caution or a warning; a warning flashes red and brings the missiles. One file of about 542 KB with its paintings inside it, no dependencies, defines <cockpit-alert>.",
+      "author": "Justin Finkelman <https://github.com/finktheartist>",
+      "categories": [
+        "alert",
+        "notification",
+        "toast",
+        "anime",
+        "animation"
+      ],
+      "files": [
+        {
+          "path": "alert/alert.js",
+          "type": "registry:file",
+          "target": "~/public/cockpit-ui/alert.js"
+        }
+      ],
+      "docs": "Cockpit UI Alert is a plain script that registers a custom element. Load /cockpit-ui/alert.js with a script tag (not a module), then use <cockpit-alert></cockpit-alert> and call el.show(\"warning\", \"Disk almost full\"). Listen for cockpit:ack; read el.level. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+    },
+    {
+      "name": "tabs",
+      "type": "registry:file",
+      "title": "Cockpit UI Monitor select",
+      "description": "Three key caps over a monitor: main, sub and rear. Changing tab cuts through static. Stay on the rear camera for a moment and a contact turns up. One file of about 519 KB with its paintings inside it, no dependencies, defines <cockpit-tabs>.",
+      "author": "Justin Finkelman <https://github.com/finktheartist>",
+      "categories": [
+        "tabs",
+        "anime",
+        "animation"
+      ],
+      "files": [
+        {
+          "path": "tabs/tabs.js",
+          "type": "registry:file",
+          "target": "~/public/cockpit-ui/tabs.js"
+        }
+      ],
+      "docs": "Cockpit UI Monitor select is a plain script that registers a custom element. Load /cockpit-ui/tabs.js with a script tag (not a module), then use <cockpit-tabs></cockpit-tabs>. Read el.value (main, sub or rear); it fires input and change. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+    },
+    {
+      "name": "agent",
+      "type": "registry:file",
+      "title": "Cockpit UI Agent state",
+      "description": "A status display for an AI agent. The robot stands as a hologram on a projector base and turns; its pose and colour follow the state (standby, thinking, working, waiting, done, error) and a window names the task. One file of about 2.8 MB with its paintings inside it, no dependencies, defines <cockpit-agent>.",
+      "author": "Justin Finkelman <https://github.com/finktheartist>",
+      "categories": [
+        "status",
+        "agent",
+        "ai",
+        "anime",
+        "animation"
+      ],
+      "files": [
+        {
+          "path": "agent/agent.js",
+          "type": "registry:file",
+          "target": "~/public/cockpit-ui/agent.js"
+        }
+      ],
+      "docs": "Cockpit UI Agent state is a plain script that registers a custom element. Load /cockpit-ui/agent.js with a script tag (not a module), then use <cockpit-agent></cockpit-agent> and call el.set(\"working\", \"reading 12 files\"). States: standby, thinking, working, waiting, done, error. It fires cockpit:state. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+    },
+    {
+      "name": "loading",
+      "type": "registry:file",
+      "title": "Cockpit UI System load",
+      "description": "A long gauge with a segmented bar and a number window. Feed it progress and the line under it reports what is starting up; at 100 the robot's visor lights. One file of about 442 KB with its paintings inside it, no dependencies, defines <cockpit-loading>.",
+      "author": "Justin Finkelman <https://github.com/finktheartist>",
+      "categories": [
+        "progress",
+        "loading",
+        "anime",
+        "animation"
+      ],
+      "files": [
+        {
+          "path": "loading/loading.js",
+          "type": "registry:file",
+          "target": "~/public/cockpit-ui/loading.js"
+        }
+      ],
+      "docs": "Cockpit UI System load is a plain script that registers a custom element. Load /cockpit-ui/loading.js with a script tag (not a module), then use <cockpit-loading></cockpit-loading> and call el.set(0.4) with progress from 0 to 1. Add the demo attribute to make it run by itself. It fires cockpit:done at 100. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+    },
+    {
+      "name": "stepper",
+      "type": "registry:file",
+      "title": "Cockpit UI Active time",
+      "description": "Minus and plus keys round an amber window, with a strip of ten lamps. Each press is thirty seconds; hold to repeat. At five minutes the power cable comes out. One file of about 516 KB with its paintings inside it, no dependencies, defines <cockpit-stepper>.",
+      "author": "Justin Finkelman <https://github.com/finktheartist>",
+      "categories": [
+        "stepper",
+        "number",
+        "anime",
+        "animation"
+      ],
+      "files": [
+        {
+          "path": "stepper/stepper.js",
+          "type": "registry:file",
+          "target": "~/public/cockpit-ui/stepper.js"
+        }
+      ],
+      "docs": "Cockpit UI Active time is a plain script that registers a custom element. Load /cockpit-ui/stepper.js with a script tag (not a module), then use <cockpit-stepper value=\"120\"></cockpit-stepper>. Read el.value in seconds (30 to 300); it fires input and change. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+    },
+    {
+      "name": "input",
+      "type": "registry:file",
+      "title": "Cockpit UI Callsign",
+      "description": "A real text field in a long green window, with a character count and a small speaker screen. Typing rattles the keys; Enter registers the name and the bridge answers. One file of about 480 KB with its paintings inside it, no dependencies, defines <cockpit-input>.",
+      "author": "Justin Finkelman <https://github.com/finktheartist>",
+      "categories": [
+        "input",
+        "text",
+        "anime",
+        "animation"
+      ],
+      "files": [
+        {
+          "path": "input/input.js",
+          "type": "registry:file",
+          "target": "~/public/cockpit-ui/input.js"
+        }
+      ],
+      "docs": "Cockpit UI Callsign is a plain script that registers a custom element. Load /cockpit-ui/input.js with a script tag (not a module), then use <cockpit-input></cockpit-input>. Read el.value; it fires input, change, and cockpit:enter with { value } when Enter is pressed. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+    }
+  ]
+}

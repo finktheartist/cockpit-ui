@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cockpit UI starter: a mute switch</title>
+<style>body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #000; color: #8791a3; font: 13px/1.4 ui-monospace, Menlo, monospace; } p { text-align: center; text-transform: uppercase; letter-spacing: .08em; }</style>
+</head>
+<body>
+<main style="width: min(560px, 100vw - 30px)">
+  <cockpit-mute></cockpit-mute>
+  <p id="said"></p>
+</main>
+<!-- the smallest whole control: a toggle painted twice (thrown each way), a small screen drawn in code, one piece of lettering -->
+<script src="core.js"></script>
+<script>
+(() => {
+  const { GREEN, RED, MONO } = Cockpit;
+  // the paintings: in a shipped control these are data URIs stamped in by tools/build.mjs; here they are files next to the page
+  const ART = { lock: 'art/lock.webp', release: 'art/release.webp', tile: 'art/tile.webp', kachi: 'art/kachi.webp' };
+  const CSS = `
+    .stage { --ar: 1000 / 600; }
+    .sw { left: 4%; top: 6%; width: 46%; aspect-ratio: 760 / 750; background-image: var(--a-lock); border-radius: 22%; }
+    .sw i { position: absolute; inset: 0; background: var(--a-release) center / 100% 100%; opacity: 0; }
+    .sw[aria-checked="true"] i { opacity: 1; }
+    .tile { left: 52%; top: 22%; width: 46%; }
+    .sfx[data-n=kachi] { left: 8%; top: 0; width: 26%; }`;
+  const HTML = `<div class="stage">
+      <div class="part tile"><canvas class="t" aria-hidden="true"></canvas></div>
+      <button class="part hit sw" role="switch" aria-checked="false" aria-label="Mute"><i></i></button>
+      <img class="sfx" data-n="kachi" data-art="kachi" alt="">
+    </div>`;
+
+  // make() gets the shadow root and the shared clock, and returns { frame(t) } plus whatever the element exposes
+  function make(el, env) {
+    const k = Cockpit.kit(el, env), sw = el.querySelector('.sw'), cv = k.canvas('.t', 103, 80), g = cv.g;
+    let on = false, at = -9, last = -1;
+    const set = (v, quiet) => { on = v; at = env.now; last = -1; sw.setAttribute('aria-checked', v); k.say(v ? 'Muted. The bridge can no longer hear you sigh.' : 'Live. Everyone can hear you again.'); if (!quiet) k.pop('kachi'); };
+    sw.addEventListener('click', () => set(!on));
+    set(false, true);
+    return {
+      frame(t) {
+        const f = Math.floor(t * 12); if (f === last) return; last = f;   // twelve drawings a second
+        const col = on ? RED : GREEN, flash = !env.calm && t - at < 0.17;   // the screen flashes for two drawings on a change
+        cv.begin(col, flash); g.fillStyle = flash ? '#06140c' : col;
+        g.font = `700 9px ${MONO}`; g.fillText('COMMS', 8, 16);
+        g.textAlign = 'center'; g.font = `800 24px ${MONO}`; g.fillText(on ? 'MUTE' : 'LIVE', 51, 52);
+        cv.end(f, col, false);
+      },
+      set(v) { set(!!v, true); },
+    };
+  }
+
+  Cockpit.define('cockpit-mute', {
+    art: ART, css: CSS, html: HTML, make,
+    form: true, formValue: (v) => (v ? 'on' : null),
+    read: (r) => r.querySelector('.sw').getAttribute('aria-checked') === 'true',   // what input and change compare
+    api: { get checked() { return this._read(); }, set checked(v) { this.piece.set(v); this._settle(); } },
+  });
+})();
+const el = document.querySelector('cockpit-mute');
+el.addEventListener('cockpit:line', (e) => { document.getElementById('said').textContent = e.detail.text; });
+</script>
+</body>
+</html>

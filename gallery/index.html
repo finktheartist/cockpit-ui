@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cockpit UI</title>
+<meta name="description" content="Eleven ordinary UI controls as the cockpit of a 1990s giant-robot anime. Painted pieces, drawn screens, anime reactions. Each is a single file with no dependencies.">
+<meta property="og:title" content="Cockpit UI">
+<meta property="og:description" content="Eleven ordinary UI controls as the cockpit of a 1990s giant-robot anime.">
+<meta property="og:image" content="title.jpg">
+<style>
+  :root { --bg: #000; --ink: #e8ecf2; --dim: #8791a3; --gold: #ffc93a; --cyan: #5fe6ff; }
+  * { box-sizing: border-box; }
+  html { overflow-x: clip; background: var(--bg); }
+  body { margin: 0; color: var(--ink); font: 14px/1.45 ui-monospace, "SF Mono", Menlo, Consolas, monospace; overflow-x: clip; }
+  a { color: var(--cyan); } :focus-visible { outline: 2.5px solid #fff; outline-offset: 3px; }
+  .pill { min-height: 32px; padding: 4px 13px; border: 2px solid #3a4558; border-radius: 6px; background: #121824; color: var(--ink); font: inherit; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; cursor: pointer; }
+  .pill:hover { border-color: var(--gold); } .pill:active { translate: 0 1px; }
+  .wrap { max-width: 1500px; margin: 0 auto; padding: 26px 16px 70px; }
+  header { max-width: 760px; margin: 0 auto; text-align: center; }
+  header img { display: block; width: 100%; height: auto; aspect-ratio: 1600 / 700; border-radius: 10px; }
+  h1 { margin: 18px 0 0; font-size: 18px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
+  .lede { margin: 8px auto 0; max-width: 600px; color: var(--dim); font-size: 13.5px; }
+  .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 14px 0 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr)); gap: 44px 22px; margin-top: 44px; align-items: start; }
+  .item { min-width: 0; }
+  .cap { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 0 2px 12px; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+  .cap h2 { margin: 0; color: var(--gold); font-size: 12.5px; letter-spacing: .12em; white-space: nowrap; } .cap span { text-align: right; }
+  .stage { display: grid; justify-items: center; }
+  .said { margin: 12px 0 0; min-height: 38px; font-size: 11.5px; line-height: 18px; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); text-align: center; }
+  .acts { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 6px; }
+  .note { margin: 50px auto 0; max-width: 640px; text-align: center; color: var(--dim); font-size: 12.5px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="title.jpg" width="1600" height="700" alt="Cockpit UI: five of the controls side by side on black, the launch button, the output gain dial, the agent hologram, the alert panel and the safety lock.">
+    <h1>Cockpit UI</h1>
+    <p class="lede">Eleven ordinary controls as the cockpit of a 1990s giant-robot anime. The pieces are paintings, the screens are drawn live, and every one reacts when you use it. Each is a single file with no dependencies.</p>
+    <p class="links">
+      <a class="pill" href="https://github.com/finktheartist/cockpit-ui" target="_blank" rel="noopener">The repo on GitHub</a>
+      <a class="pill" href="https://x.com/crtvTeknologist" target="_blank" rel="noopener">@crtvTeknologist on X</a>
+    </p>
+  </header>
+  <main class="grid" id="grid"></main>
+  <p class="note">Everything here is live: use the controls. They are drawn for a dark page. The shaking, impact frames and cut-ins are skipped for <code>prefers-reduced-motion</code>.</p>
+  <p class="sr" aria-live="polite" id="copied"></p>
+</div>
+<script src="../launch/launch.js"></script>
+<script src="../dial/dial.js"></script>
+<script src="../checklist/checklist.js"></script>
+<script src="../lock/lock.js"></script>
+<script src="../mode/mode.js"></script>
+<script src="../alert/alert.js"></script>
+<script src="../tabs/tabs.js"></script>
+<script src="../agent/agent.js"></script>
+<script src="../loading/loading.js"></script>
+<script src="../stepper/stepper.js"></script>
+<script src="../input/input.js"></script>
+<script>
+// The gallery: every control live on one page, with its install line and a prompt that hands a coding agent the real file.
+const REPO = 'finktheartist/cockpit-ui', SITE = 'https://cockpit-ui.vercel.app';
+const ITEMS = [
+  {
+    "id": "launch",
+    "name": "Launch",
+    "tag": "cockpit-launch",
+    "kind": "hold to confirm",
+    "html": "<cockpit-launch></cockpit-launch>",
+    "docs": "then use <cockpit-launch></cockpit-launch>. Listen for cockpit:launch; read el.state (safe, armed, launched); el.reset() puts the guard back.",
+    "desc": "A red button under an orange guard. Lift the guard, then hold the button: lamps count up, the screen counts down, speed lines close in. Hold to the end and the robot launches across the whole control."
+  },
+  {
+    "id": "dial",
+    "name": "Output gain",
+    "tag": "cockpit-dial",
+    "kind": "slider",
+    "html": "<cockpit-dial value=\"20\"></cockpit-dial>",
+    "docs": "then use <cockpit-dial value=\"20\"></cockpit-dial>. Read el.value (0 to 100); it fires input while it turns and change when let go. Works in forms with a name.",
+    "desc": "A slider that is a dial beside a screen. Turn it and eleven lamps light round it, the number and the trace on the screen climb, and the copy changes at each level. At 100 the pilot cuts in."
+  },
+  {
+    "id": "checklist",
+    "name": "Pre-launch check",
+    "tag": "cockpit-checklist",
+    "kind": "checkboxes",
+    "html": "<cockpit-checklist></cockpit-checklist>",
+    "docs": "then use <cockpit-checklist></cockpit-checklist>. Read el.value (four digits such as \"1010\") and el.complete; it fires input and change. Works in forms with a name.",
+    "desc": "Four latching buttons with lit labels and a screen that keeps the tally. Tick all four and the deck crew wave you off."
+  },
+  {
+    "id": "lock",
+    "name": "Safety lock",
+    "tag": "cockpit-lock",
+    "kind": "switch",
+    "html": "<cockpit-lock></cockpit-lock>",
+    "docs": "then use <cockpit-lock></cockpit-lock>. Read el.checked and listen for change. Works in forms with a name.",
+    "desc": "A heavy toggle between LOCK and RELEASE beside a screen listing four clamps. Throw it and the clamps let go one after another; when the last one goes, the restraints blow off."
+  },
+  {
+    "id": "mode",
+    "name": "Drive mode",
+    "tag": "cockpit-mode",
+    "kind": "radio group",
+    "html": "<cockpit-mode></cockpit-mode>",
+    "docs": "then use <cockpit-mode></cockpit-mode>. Read el.value (cruise, combat, snipe or stealth); it fires input and change. Works in forms with a name.",
+    "desc": "Four key caps: cruise, combat, snipe, stealth. The chosen one lights in its own colour and the screen redraws for it. Choosing combat brings the robot's fist."
+  },
+  {
+    "id": "alert",
+    "name": "Alert",
+    "tag": "cockpit-alert",
+    "kind": "notification",
+    "html": "<cockpit-alert></cockpit-alert>",
+    "docs": "then use <cockpit-alert></cockpit-alert> and call el.show(\"warning\", \"Disk almost full\"). Listen for cockpit:ack; read el.level.",
+    "desc": "A warning panel: three level lamps, a hazard-striped window and an ACKNOWLEDGE bar. It shows a notice, a caution or a warning; a warning flashes red and brings the missiles."
+  },
+  {
+    "id": "tabs",
+    "name": "Monitor select",
+    "tag": "cockpit-tabs",
+    "kind": "tabs",
+    "html": "<cockpit-tabs></cockpit-tabs>",
+    "docs": "then use <cockpit-tabs></cockpit-tabs>. Read el.value (main, sub or rear); it fires input and change.",
+    "desc": "Three key caps over a monitor: main, sub and rear. Changing tab cuts through static. Stay on the rear camera for a moment and a contact turns up."
+  },
+  {
+    "id": "agent",
+    "name": "Agent state",
+    "tag": "cockpit-agent",
+    "kind": "status display",
+    "html": "<cockpit-agent></cockpit-agent>",
+    "docs": "then use <cockpit-agent></cockpit-agent> and call el.set(\"working\", \"reading 12 files\"). States: standby, thinking, working, waiting, done, error. It fires cockpit:state.",
+    "desc": "A status display for an AI agent. The robot stands as a hologram on a projector base and turns; its pose and colour follow the state (standby, thinking, working, waiting, done, error) and a window names the task."
+  },
+  {
+    "id": "loading",
+    "name": "System load",
+    "tag": "cockpit-loading",
+    "kind": "loading bar",
+    "html": "<cockpit-loading demo></cockpit-loading>",
+    "docs": "then use <cockpit-loading></cockpit-loading> and call el.set(0.4) with progress from 0 to 1. Add the demo attribute to make it run by itself. It fires cockpit:done at 100.",
+    "desc": "A long gauge with a segmented bar and a number window. Feed it progress and the line under it reports what is starting up; at 100 the robot's visor lights."
+  },
+  {
+    "id": "stepper",
+    "name": "Active time",
+    "tag": "cockpit-stepper",
+    "kind": "stepper",
+    "html": "<cockpit-stepper value=\"120\"></cockpit-stepper>",
+    "docs": "then use <cockpit-stepper value=\"120\"></cockpit-stepper>. Read el.value in seconds (30 to 300); it fires input and change. Works in forms with a name.",
+    "desc": "Minus and plus keys round an amber window, with a strip of ten lamps. Each press is thirty seconds; hold to repeat. At five minutes the power cable comes out."
+  },
+  {
+    "id": "input",
+    "name": "Callsign",
+    "tag": "cockpit-input",
+    "kind": "text input",
+    "html": "<cockpit-input></cockpit-input>",
+    "docs": "then use <cockpit-input></cockpit-input>. Read el.value; it fires input, change, and cockpit:enter with { value } when Enter is pressed. Works in forms with a name.",
+    "desc": "A real text field in a long green window, with a character count and a small speaker screen. Typing rattles the keys; Enter registers the name and the bridge answers."
+  }
+];
+const grid = document.getElementById('grid'), copied = document.getElementById('copied');
+const copy = async (btn, text) => { try { await navigator.clipboard.writeText(text); } catch { const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); } const was = btn.textContent; btn.textContent = 'Copied'; copied.textContent = 'Copied to the clipboard'; setTimeout(() => { btn.textContent = was; copied.textContent = ''; }, 1400); };
+for (const c of ITEMS) {
+  const s = document.createElement('section'); s.className = 'item'; s.id = c.id;
+  s.innerHTML = '<div class="cap"><h2></h2><span></span></div><div class="stage">' + c.html + '</div><p class="said" aria-hidden="true"></p><div class="acts"><button class="pill" type="button" data-a="install">Copy install</button><button class="pill" type="button" data-a="prompt">Copy a prompt</button><a class="pill" href="../' + c.id + '/">Open</a></div>';
+  s.querySelector('h2').textContent = c.name; s.querySelector('.cap span').textContent = c.kind;
+  grid.appendChild(s);
+  const el = s.querySelector(c.tag), said = s.querySelector('.said');
+  el.addEventListener('cockpit:line', (e) => { said.textContent = e.detail.text; }); if (el.line) said.textContent = el.line;
+  const install = 'npx shadcn add ' + REPO + '/' + c.id;
+  const prompt = 'Add the Cockpit UI "' + c.name + '" control to this project. It is one plain script with no dependencies that registers the custom element <' + c.tag + '>: ' + c.desc + '\n\n1. Download ' + SITE + '/' + c.id + '/' + c.id + '.js into the folder this project serves static files from (for example public/cockpit-ui/' + c.id + '.js), or run: ' + install + '\n2. Load it with a plain script tag, not as a module, and do not edit, split or re-bundle the file: its paintings are inside it as data.\n3. In the page, ' + c.docs + '\n4. Put it on a dark background; it is drawn to float on black. It is 640 pixels wide at most and scales down with its container.\n\nFull notes: https://github.com/' + REPO + '/blob/main/' + c.id + '/README.md';
+  s.querySelector('[data-a=install]').addEventListener('click', (e) => copy(e.currentTarget, install));
+  s.querySelector('[data-a=prompt]').addEventListener('click', (e) => copy(e.currentTarget, prompt));
+}
+</script>
+</body>
+</html>
