@@ -32,7 +32,7 @@ The controls float with no card behind them. They are drawn for a black page.
 
 ## Try them
 
-Live: https://cockpit-ui.vercel.app
+Live: https://cockpit-ui-kit.vercel.app
 
 Or run it yourself:
 

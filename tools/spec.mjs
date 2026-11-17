@@ -1,7 +1,7 @@
 // What each control is, in one place. tools/docs.mjs turns this into every folder's README.md and index.html, the gallery,
 // registry.json and llms.txt, so they cannot drift apart. Edit here, then run `node tools/docs.mjs`.
 export const REPO = 'finktheartist/cockpit-ui';
-export const SITE = 'https://cockpit-ui.vercel.app';
+export const SITE = 'https://cockpit-ui-kit.vercel.app';
 export const AUTHOR = 'Justin Finkelman <https://github.com/finktheartist>';
 
 // Limits every control shares; each README ends with its own, then these.

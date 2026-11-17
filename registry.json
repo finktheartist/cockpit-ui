@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "cockpit-ui",
-  "homepage": "https://cockpit-ui.vercel.app",
+  "homepage": "https://cockpit-ui-kit.vercel.app",
   "items": [
     {
       "name": "launch",
@@ -22,7 +22,7 @@
           "target": "~/public/cockpit-ui/launch.js"
         }
       ],
-      "docs": "Cockpit UI Launch is a plain script that registers a custom element. Load /cockpit-ui/launch.js with a script tag (not a module), then use <cockpit-launch></cockpit-launch>. Listen for cockpit:launch; read el.state (safe, armed, launched); el.reset() puts the guard back. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+      "docs": "Cockpit UI Launch is a plain script that registers a custom element. Load /cockpit-ui/launch.js with a script tag (not a module), then use <cockpit-launch></cockpit-launch>. Listen for cockpit:launch; read el.state (safe, armed, launched); el.reset() puts the guard back. Put it on a dark background. More: https://cockpit-ui-kit.vercel.app"
     },
     {
       "name": "dial",
@@ -44,7 +44,7 @@
           "target": "~/public/cockpit-ui/dial.js"
         }
       ],
-      "docs": "Cockpit UI Output gain is a plain script that registers a custom element. Load /cockpit-ui/dial.js with a script tag (not a module), then use <cockpit-dial value=\"20\"></cockpit-dial>. Read el.value (0 to 100); it fires input while it turns and change when let go. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+      "docs": "Cockpit UI Output gain is a plain script that registers a custom element. Load /cockpit-ui/dial.js with a script tag (not a module), then use <cockpit-dial value=\"20\"></cockpit-dial>. Read el.value (0 to 100); it fires input while it turns and change when let go. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui-kit.vercel.app"
     },
     {
       "name": "checklist",
@@ -65,7 +65,7 @@
           "target": "~/public/cockpit-ui/checklist.js"
         }
       ],
-      "docs": "Cockpit UI Pre-launch check is a plain script that registers a custom element. Load /cockpit-ui/checklist.js with a script tag (not a module), then use <cockpit-checklist></cockpit-checklist>. Read el.value (four digits such as \"1010\") and el.complete; it fires input and change. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+      "docs": "Cockpit UI Pre-launch check is a plain script that registers a custom element. Load /cockpit-ui/checklist.js with a script tag (not a module), then use <cockpit-checklist></cockpit-checklist>. Read el.value (four digits such as \"1010\") and el.complete; it fires input and change. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui-kit.vercel.app"
     },
     {
       "name": "lock",
@@ -86,7 +86,7 @@
           "target": "~/public/cockpit-ui/lock.js"
         }
       ],
-      "docs": "Cockpit UI Safety lock is a plain script that registers a custom element. Load /cockpit-ui/lock.js with a script tag (not a module), then use <cockpit-lock></cockpit-lock>. Read el.checked and listen for change. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+      "docs": "Cockpit UI Safety lock is a plain script that registers a custom element. Load /cockpit-ui/lock.js with a script tag (not a module), then use <cockpit-lock></cockpit-lock>. Read el.checked and listen for change. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui-kit.vercel.app"
     },
     {
       "name": "mode",
@@ -107,7 +107,7 @@
           "target": "~/public/cockpit-ui/mode.js"
         }
       ],
-      "docs": "Cockpit UI Drive mode is a plain script that registers a custom element. Load /cockpit-ui/mode.js with a script tag (not a module), then use <cockpit-mode></cockpit-mode>. Read el.value (cruise, combat, snipe or stealth); it fires input and change. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+      "docs": "Cockpit UI Drive mode is a plain script that registers a custom element. Load /cockpit-ui/mode.js with a script tag (not a module), then use <cockpit-mode></cockpit-mode>. Read el.value (cruise, combat, snipe or stealth); it fires input and change. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui-kit.vercel.app"
     },
     {
       "name": "alert",
@@ -129,7 +129,7 @@
           "target": "~/public/cockpit-ui/alert.js"
         }
       ],
-      "docs": "Cockpit UI Alert is a plain script that registers a custom element. Load /cockpit-ui/alert.js with a script tag (not a module), then use <cockpit-alert></cockpit-alert> and call el.show(\"warning\", \"Disk almost full\"). Listen for cockpit:ack; read el.level. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+      "docs": "Cockpit UI Alert is a plain script that registers a custom element. Load /cockpit-ui/alert.js with a script tag (not a module), then use <cockpit-alert></cockpit-alert> and call el.show(\"warning\", \"Disk almost full\"). Listen for cockpit:ack; read el.level. Put it on a dark background. More: https://cockpit-ui-kit.vercel.app"
     },
     {
       "name": "tabs",
@@ -149,7 +149,7 @@
           "target": "~/public/cockpit-ui/tabs.js"
         }
       ],
-      "docs": "Cockpit UI Monitor select is a plain script that registers a custom element. Load /cockpit-ui/tabs.js with a script tag (not a module), then use <cockpit-tabs></cockpit-tabs>. Read el.value (main, sub or rear); it fires input and change. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+      "docs": "Cockpit UI Monitor select is a plain script that registers a custom element. Load /cockpit-ui/tabs.js with a script tag (not a module), then use <cockpit-tabs></cockpit-tabs>. Read el.value (main, sub or rear); it fires input and change. Put it on a dark background. More: https://cockpit-ui-kit.vercel.app"
     },
     {
       "name": "agent",
@@ -171,7 +171,7 @@
           "target": "~/public/cockpit-ui/agent.js"
         }
       ],
-      "docs": "Cockpit UI Agent state is a plain script that registers a custom element. Load /cockpit-ui/agent.js with a script tag (not a module), then use <cockpit-agent></cockpit-agent> and call el.set(\"working\", \"reading 12 files\"). States: standby, thinking, working, waiting, done, error. It fires cockpit:state. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+      "docs": "Cockpit UI Agent state is a plain script that registers a custom element. Load /cockpit-ui/agent.js with a script tag (not a module), then use <cockpit-agent></cockpit-agent> and call el.set(\"working\", \"reading 12 files\"). States: standby, thinking, working, waiting, done, error. It fires cockpit:state. Put it on a dark background. More: https://cockpit-ui-kit.vercel.app"
     },
     {
       "name": "loading",
@@ -192,7 +192,7 @@
           "target": "~/public/cockpit-ui/loading.js"
         }
       ],
-      "docs": "Cockpit UI System load is a plain script that registers a custom element. Load /cockpit-ui/loading.js with a script tag (not a module), then use <cockpit-loading></cockpit-loading> and call el.set(0.4) with progress from 0 to 1. Add the demo attribute to make it run by itself. It fires cockpit:done at 100. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+      "docs": "Cockpit UI System load is a plain script that registers a custom element. Load /cockpit-ui/loading.js with a script tag (not a module), then use <cockpit-loading></cockpit-loading> and call el.set(0.4) with progress from 0 to 1. Add the demo attribute to make it run by itself. It fires cockpit:done at 100. Put it on a dark background. More: https://cockpit-ui-kit.vercel.app"
     },
     {
       "name": "stepper",
@@ -213,7 +213,7 @@
           "target": "~/public/cockpit-ui/stepper.js"
         }
       ],
-      "docs": "Cockpit UI Active time is a plain script that registers a custom element. Load /cockpit-ui/stepper.js with a script tag (not a module), then use <cockpit-stepper value=\"120\"></cockpit-stepper>. Read el.value in seconds (30 to 300); it fires input and change. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+      "docs": "Cockpit UI Active time is a plain script that registers a custom element. Load /cockpit-ui/stepper.js with a script tag (not a module), then use <cockpit-stepper value=\"120\"></cockpit-stepper>. Read el.value in seconds (30 to 300); it fires input and change. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui-kit.vercel.app"
     },
     {
       "name": "input",
@@ -234,7 +234,7 @@
           "target": "~/public/cockpit-ui/input.js"
         }
       ],
-      "docs": "Cockpit UI Callsign is a plain script that registers a custom element. Load /cockpit-ui/input.js with a script tag (not a module), then use <cockpit-input></cockpit-input>. Read el.value; it fires input, change, and cockpit:enter with { value } when Enter is pressed. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui.vercel.app"
+      "docs": "Cockpit UI Callsign is a plain script that registers a custom element. Load /cockpit-ui/input.js with a script tag (not a module), then use <cockpit-input></cockpit-input>. Read el.value; it fires input, change, and cockpit:enter with { value } when Enter is pressed. Works in forms with a name. Put it on a dark background. More: https://cockpit-ui-kit.vercel.app"
     }
   ]
 }
